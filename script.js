@@ -159,3 +159,17 @@ if (themeToggle) {
         });
     });
 });
+
+// В script.js
+document.querySelector('.burger-btn').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.mobile-nav-content').classList.toggle('show');
+  });
+  
+  // Закрытие при клике на пункт меню
+  document.querySelectorAll('.mobile-nav-content .nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelector('.burger-btn').classList.remove('active');
+      document.querySelector('.mobile-nav-content').classList.remove('show');
+    });
+  });

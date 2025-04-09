@@ -3,14 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alexdelete — 2D Artist</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <button id="theme-toggle" aria-label="Переключить тему">
     <span class="icon-sun"></span> <!-- для светлой темы -->
   </button>
-  <div class="fixed-title">alexdelete / 2D Artist</div>
+  <div class="mobile-nav">
+    <button class="burger-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="mobile-nav-content">
+      <aside class="app-nav">
+        <nav class="nav-content">
+          <div class="nav-item" onclick="location.href='paintings.html'">
+            <span class="nav-number">01</span>
+            <span class="nav-title">Paintings</span>
+            <div class="nav-line"></div>
+          </div>
+          <div class="nav-item" onclick="location.href='digital-art.html'">
+            <span class="nav-number">02</span>
+            <span class="nav-title">Digital art</span>
+            <div class="nav-line"></div>
+          </div>
+          <div class="nav-item" onclick="location.href='bio.html'">
+            <span class="nav-number">03</span>
+            <span class="nav-title">Bio</span>
+            <div class="nav-line"></div>
+          </div>
+          <div class="nav-item" onclick="location.href='contacts.html'">
+            <span class="nav-number">04</span>
+            <span class="nav-title">Contacts</span>
+            <div class="nav-line"></div>
+          </div>
+        </nav>
+      </aside>
+    </div>
+  </div>
   <div class="app-container">
     <aside class="app-nav">
       <nav class="nav-content">
