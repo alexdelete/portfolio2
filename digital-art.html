@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>alexdelete — Digital Art</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button id="theme-toggle" aria-label="Переключить тему">
+    <span class="icon-sun"></span> <!-- для светлой темы -->
+  </button>
+  </div>
+  <div class="fixed-title">alexdelete / Digital Art</div>
+  <div class="app-container">
+    <aside class="app-nav">
+      <nav class="nav-content">
+        <div class="nav-item" onclick="location.href='index.html'">
+          <span class="nav-number">00</span>
+          <span class="nav-title">Home</span>
+          <div class="nav-line"></div>
+        </div>
+        <div class="nav-item" onclick="location.href='paintings.html'">
+          <span class="nav-number">01</span>
+          <span class="nav-title">Paintings</span>
+        </div>
+        <div class="nav-item is--active" onclick="location.href='digital-art.html'">
+          <span class="nav-number">02</span>
+          <span class="nav-title">Digital Art</span>
+        </div>
+        <div class="nav-item" onclick="location.href='bio.html'">
+          <span class="nav-number">03</span>
+          <span class="nav-title">Bio</span>
+        </div>
+        <div class="nav-item" onclick="location.href='contacts.html'">
+          <span class="nav-number">04</span>
+          <span class="nav-title">Contacts</span>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="app-main">
+      <div class="content-wrapper">
+        <section class="hero-section">
+          <h1>Digital Art</h1>
+          <p>Pixel experiments 2020—2024</p>
+        </section>
+
+        <div class="category-tabs">
+          <!-- Illustrations Tab -->
+          <div class="tab-item"> <!-- Убрал класс active -->
+            <div class="tab-header">
+              <div class="tab-marker"></div>
+              <h2>Illustrations</h2>
+            </div>
+            <div class="tab-content">
+              <div class="gallery-grid">
+                <div class="gallery-item">
+                  <img src="img/digital1.jpg" alt="Digital Illustration 1">
+                  <div class="art-info">Neon Dreams, 2023</div>
+                </div>
+                <div class="gallery-item">
+                  <img src="img/digital2.jpg" alt="Digital Illustration 2">
+                  <div class="art-info">Cyber City, 2022</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animations Tab -->
+          <div class="tab-item">
+            <div class="tab-header">
+              <div class="tab-marker"></div>
+              <h2>Animations</h2>
+            </div>
+            <div class="tab-content">
+              <div class="gallery-grid">
+                <div class="gallery-item">
+                  <video muted loop>
+                    <source src="img/anim1.mp4" type="video/mp4">
+                  </video>
+                  <div class="art-info">Loop #12, 2024</div>
+                </div>
+                <div class="gallery-item">
+                  <video muted loop>
+                    <source src="img/anim2.mp4" type="video/mp4">
+                  </video>
+                  <div class="art-info">Data Flow, 2023</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
