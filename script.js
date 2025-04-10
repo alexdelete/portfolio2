@@ -1,116 +1,88 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Плейлист консоль
-    const playlistToggle = document.getElementById('playlist-toggle');
-    const playlistContent = document.getElementById('playlist-content');
-    let currentTrack = 0;
-    let hintElement = null;
-    let isLoading = false;
+    const express = require('express');
+    const fetch = require('node-fetch');
+    require('dotenv').config();
     
-    if (playlistToggle && playlistContent) {
-        const loadTracks = () => {
-            isLoading = true;
-            playlistContent.innerHTML = `
-                <div class="terminal-loader">
-                    <div class="terminal-header">
-                        <div class="terminal-controls">
-                            <span class="control red"></span>
-                            <span class="control yellow"></span>
-                            <span class="control green"></span>
-                        </div>
-                        <div class="terminal-title">track_loader.exe</div>
-                    </div>
-                    <div class="terminal-content">Initializing playlist...</div>
-                </div>
-            `;
-            
-            setTimeout(() => {
-                isLoading = false;
-                renderTracks();
-                showHint();
-            }, 3000);
-        };
-        
-        const renderTracks = () => {
-            playlistContent.innerHTML = `
-                <div class="playlist-track" data-index="0">1. Aphex Twin - Xtal</div>
-                <div class="playlist-track" data-index="1">2. M83 - Midnight city</div>
-                <div class="playlist-track" data-index="2">3. M|O|O|N - Hydrogen</div>
-                <div class="playlist-track" data-index="3">4. Aphex Twin - 4</div>
-                <div class="playlist-track" data-index="4">5. 100 gecs - stupid horse</div>
-                <div class="playlist-track" data-index="5">6. Oneohtrix Point Never - Boring Angel</div>
-                <div class="playlist-track" data-index="6">7. Ross from Friends - The Daisy</div>
-                <div class="playlist-track" data-index="7">8. Lana Del Rey, The Weeknd - Stargirl Interlude</div>
-                <div class="playlist-track" data-index="8">9. 100 gecs - money machine</div>
-                <div class="playlist-track" data-index="9">10. 100 gecs - ringtone</div>
-                <div class="playlist-link">
-                    <a href="https://open.spotify.com/playlist/..." target="_blank">OPEN_IN_SPOTIFY</a>
-                </div>
-            `;
-            
-            const tracks = document.querySelectorAll('.playlist-track');
-            if (tracks[currentTrack]) {
-                tracks[currentTrack].classList.add('selected');
-            }
-        };
-        
-        const showHint = () => {
-            if (hintElement) return;
-            
-            hintElement = document.createElement('div');
-            hintElement.className = 'playlist-hint';
-            hintElement.innerHTML = 'Use ↑ ↓ arrows to navigate <span class="close-hint">[×]</span>';
-            playlistContent.prepend(hintElement);
-            
-            hintElement.querySelector('.close-hint').addEventListener('click', () => {
-                hintElement.style.opacity = '0';
-                setTimeout(() => hintElement.remove(), 300);
-            });
-        };
-        
-        playlistToggle.addEventListener('click', (e) => {
-            if (e.button === 0 && !isLoading) {
-                const wasClosed = !playlistContent.classList.contains('active');
-                playlistContent.classList.toggle('active');
-                
-                const arrow = playlistToggle.querySelector('.console-arrow');
-                if (arrow) {
-                    arrow.textContent = playlistContent.classList.contains('active') ? '▲' : '▼';
-                }
-                
-                if (wasClosed && playlistContent.classList.contains('active')) {
-                    loadTracks();
-                }
-            }
-        });
-        
-        document.addEventListener('keydown', (e) => {
-            if (!playlistContent.classList.contains('active') || isLoading) return;
-            
-            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                if (hintElement) {
-                    hintElement.style.opacity = '0';
-                    setTimeout(() => hintElement.remove(), 300);
-                }
-                
-                e.preventDefault();
-                const tracks = document.querySelectorAll('.playlist-track');
-                
-                const prevTrack = currentTrack;
-                if (e.key === 'ArrowDown' && currentTrack < tracks.length - 1) {
-                    currentTrack++;
-                } else if (e.key === 'ArrowUp' && currentTrack > 0) {
-                    currentTrack--;
-                }
-                
-                if (prevTrack !== currentTrack) {
-                    tracks.forEach(t => t.classList.remove('selected'));
-                    tracks[currentTrack].classList.add('selected');
-                    tracks[currentTrack].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-            }
-        });
+    const app = express();
+    const port = 3000;
+    
+    const client_id = process.env.CLIENT_ID;
+    const client_secret = process.env.CLIENT_SECRET;
+    const refresh_token = process.env.REFRESH_TOKEN;
+    
+    async function getAccessToken() {
+      const response = await fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Basic ' + Buffer.from(client_id + ':' + client_secret).toString('base64'),
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          grant_type: 'refresh_token',
+          refresh_token: refresh_token,
+        }),
+      });
+    
+      const data = await response.json();
+      return data.access_token;
     }
+    
+    app.get('/now-playing', async (req, res) => {
+      try {
+        const access_token = await getAccessToken();
+    
+        const response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+          headers: {
+            Authorization: 'Bearer ' + access_token,
+          },
+        });
+    
+        if (response.status === 204 || response.status > 400) {
+          return res.json({ isPlaying: false });
+        }
+    
+        const data = await response.json();
+    
+        const result = {
+          isPlaying: data.is_playing,
+          name: data.item.name,
+          artist: data.item.artists.map(a => a.name).join(', '),
+          album: data.item.album.name,
+          cover: data.item.album.images[0]?.url,
+          url: data.item.external_urls.spotify,
+        };
+    
+        res.json(result);
+      } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Something went wrong.' });
+      }
+    });
+    
+    app.listen(port, () => {
+      console.log(`Server running at http://localhost:${port}`);
+    });
+
+    async function getNowPlaying() {
+        try {
+          const res = await fetch('http://localhost:3000/now-playing');
+          const data = await res.json();
+      
+          const display = document.getElementById('now-track');
+      
+          if (data.isPlaying) {
+            display.innerHTML = `<a href="${data.url}" target="_blank">${data.name}</a> — ${data.artist}`;
+          } else {
+            display.textContent = "Nothing playing";
+          }
+        } catch (err) {
+          console.error('Error fetching track:', err);
+        }
+      }
+      
+      setInterval(getNowPlaying, 30000);
+      getNowPlaying();
 
 // Переключение темы
 const themeToggle = document.getElementById('theme-toggle');
@@ -159,17 +131,3 @@ if (themeToggle) {
         });
     });
 });
-
-// В script.js
-document.querySelector('.burger-btn').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.querySelector('.mobile-nav-content').classList.toggle('show');
-  });
-  
-  // Закрытие при клике на пункт меню
-  document.querySelectorAll('.mobile-nav-content .nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-      document.querySelector('.burger-btn').classList.remove('active');
-      document.querySelector('.mobile-nav-content').classList.remove('show');
-    });
-  });
