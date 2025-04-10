@@ -2,20 +2,21 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <title>Digital Art</title>
 </head>
 <body>
   <button id="theme-toggle" aria-label="Переключить тему">
     <span class="icon-sun"></span> <!-- для светлой темы -->
   </button>
-  </div>
+  
   <div class="app-container">
     <aside class="app-nav">
       <nav class="nav-content">
         <div class="nav-item" onclick="location.href='index.html'">
           <span class="nav-number">00</span>
           <span class="nav-title">Home</span>
-          <div class="nav-line"></div>
         </div>
         <div class="nav-item" onclick="location.href='paintings.html'">
           <span class="nav-number">01</span>
@@ -36,61 +37,52 @@
       </nav>
     </aside>
 
-    <main class="app-main">
-      <div class="content-wrapper">
-        <section class="hero-section">
-          <h1>Digital Art</h1>
-          <p>Pixel experiments 2020—2024</p>
-        </section>
+    <div class="content-wrapper">
+      <section class="hero-section">
+        <h1>Digital Art</h1>
+        <p>Pixel experiments 2020—2024</p>
+      </section>
 
-        <div class="category-tabs">
-          <!-- Illustrations Tab -->
-          <div class="tab-item"> <!-- Убрал класс active -->
-            <div class="tab-header">
-              <div class="tab-marker"></div>
-              <h2>Illustrations</h2>
-            </div>
-            <div class="tab-content">
-              <div class="gallery-grid">
-                <div class="gallery-item">
-                  <img src="img/digital1.jpg" alt="Digital Illustration 1">
-                  <div class="art-info">Neon Dreams, 2023</div>
-                </div>
-                <div class="gallery-item">
-                  <img src="img/digital2.jpg" alt="Digital Illustration 2">
-                  <div class="art-info">Cyber City, 2022</div>
-                </div>
-              </div>
-            </div>
+      <section id="projects">
+        <div class="projects-list">
+          <div class="project-item" data-project="1">
+            <span class="project-number">01</span>
+            <h3 class="project-title">Project Title 1</h3>
+            <span class="project-year">2023</span>
           </div>
+          
+          <div class="project-item" data-project="2">
+            <span class="project-number">02</span>
+            <h3 class="project-title">Project Title 2</h3>
+            <span class="project-year">2022</span>
+          </div>
+          
+          <!-- Добавьте другие проекты по аналогии -->
+        </div>
+      </section>
+    </div>
+  </div>
 
-          <!-- Animations Tab -->
-          <div class="tab-item">
-            <div class="tab-header">
-              <div class="tab-marker"></div>
-              <h2>Animations</h2>
-            </div>
-            <div class="tab-content">
-              <div class="gallery-grid">
-                <div class="gallery-item">
-                  <video muted loop>
-                    <source src="img/anim1.mp4" type="video/mp4">
-                  </video>
-                  <div class="art-info">Loop #12, 2024</div>
-                </div>
-                <div class="gallery-item">
-                  <video muted loop>
-                    <source src="img/anim2.mp4" type="video/mp4">
-                  </video>
-                  <div class="art-info">Data Flow, 2023</div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- Шторка с деталями проекта -->
+  <div class="project-drawer" id="projectDrawer">
+    <div class="drawer-content">
+      <button class="close-drawer">&times;</button>
+      <div class="drawer-header">
+        <span class="drawer-number">01</span>
+        <h2 class="drawer-title">Project Title</h2>
+        <span class="drawer-year">2023</span>
+      </div>
+      <div class="drawer-body">
+        <div class="drawer-gallery">
+          <!-- Здесь будут изображения проекта -->
+        </div>
+        <div class="drawer-description">
+          <!-- Здесь будет описание проекта -->
         </div>
       </div>
-    </main>
+    </div>
   </div>
+  
   <script src="script.js"></script>
 </body>
 </html>

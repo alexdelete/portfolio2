@@ -4,36 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <title>Contacts - Alex Delete</title>
 </head>
 <body>
-    <button id="theme-toggle" aria-label="Переключить тему">
-        <span class="icon-sun"></span> <!-- для светлой темы -->
-      </button>
-        </button>
-      </div>
+  <button id="theme-toggle" aria-label="Переключить тему">
+    <span class="icon-sun"></span>
+  </button>
+
   <div class="app-container">
     <aside class="app-nav">
       <nav class="nav-content">
         <div class="nav-item" onclick="location.href='index.html'">
-            <span class="nav-number">00</span>
-            <span class="nav-title">Home</span>
-            <div class="nav-line"></div>
-          </div>
+          <span class="nav-number">00</span>
+          <span class="nav-title">Home</span>
+          <div class="nav-line"></div>
+        </div>
         <div class="nav-item" onclick="location.href='paintings.html'">
           <span class="nav-number">01</span>
           <span class="nav-title">Paintings</span>
+          <div class="nav-line"></div>
         </div>
         <div class="nav-item" onclick="location.href='digital-art.html'">
           <span class="nav-number">02</span>
           <span class="nav-title">Digital Art</span>
+          <div class="nav-line"></div>
         </div>
         <div class="nav-item" onclick="location.href='bio.html'">
           <span class="nav-number">03</span>
           <span class="nav-title">Bio</span>
+          <div class="nav-line"></div>
         </div>
         <div class="nav-item is--active" onclick="location.href='contacts.html'">
           <span class="nav-number">04</span>
           <span class="nav-title">Contacts</span>
+          <div class="nav-line"></div>
         </div>
       </nav>
     </aside>
@@ -49,34 +53,47 @@
           <div class="contact-methods">
             <div class="contact-item">
               <h2>Email</h2>
-              <a href="mailto:hello@alexdelete.art">hello@alexdelete.art</a>
+              <a href="mailto:hello@alexdelete.art" class="contact-link">hello@alexdelete.art</a>
             </div>
             
             <div class="contact-item">
               <h2>Social</h2>
-              <a href="https://instagram.com/alexdelete" target="_blank">Instagram</a><br>
-              <a href="https://twitter.com/alexdelete" target="_blank">Twitter</a>
+              <div class="social-links">
+                <a href="https://instagram.com/alexdelete" target="_blank" class="social-link">Instagram</a>
+                <a href="https://twitter.com/alexdelete" target="_blank" class="social-link">Twitter</a>
+                <a href="https://behance.net/alexdelete" target="_blank" class="social-link">Behance</a>
+              </div>
             </div>
             
             <div class="contact-item">
               <h2>Studio</h2>
-              <p>Moscow, Russia<br>By appointment only</p>
+              <address>
+                Moscow, Russia<br>
+                By appointment only
+              </address>
             </div>
           </div>
           
           <div class="contact-form">
             <h2>Send Message</h2>
-            <form>
-              <input type="text" placeholder="Name" required>
-              <input type="email" placeholder="Email" required>
-              <textarea placeholder="Your message" rows="5" required></textarea>
-              <button type="submit">Send</button>
+            <form id="contactForm" class="form">
+              <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
             </form>
           </div>
         </div>
       </div>
     </main>
   </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
