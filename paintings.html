@@ -1,43 +1,124 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Same head as index.html -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALEX DELETE | Paintings</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Neue+Machina:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="cursor"></div>
   <div class="page-transition"></div>
 
   <div class="app-container">
-    <!-- Same header/nav as index.html -->
+    <header class="app-header">
+      <div class="header-left">
+        <span class="header-label">PAINTINGS</span>
+      </div>
+      <div class="header-right">
+        <button class="menu-toggle">
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <aside class="app-nav">
+      <nav class="nav-content">
+        <div class="nav-item" data-index="0">
+          <span class="nav-number">00</span>
+          <span class="nav-title">Home</span>
+        </div>
+        <div class="nav-item active" data-index="1">
+          <span class="nav-number">01</span>
+          <span class="nav-title">Paintings</span>
+        </div>
+        <div class="nav-item" data-index="2">
+          <span class="nav-number">02</span>
+          <span class="nav-title">Digital</span>
+        </div>
+        <div class="nav-item" data-index="3">
+          <span class="nav-number">03</span>
+          <span class="nav-title">Bio</span>
+        </div>
+        <div class="nav-item" data-index="4">
+          <span class="nav-number">04</span>
+          <span class="nav-title">Contact</span>
+        </div>
+      </nav>
+    </aside>
 
     <main class="app-main">
       <div class="scroll-container">
         <section class="hero-section">
           <h1 class="hero-title">
-            <span class="title-line">PAINTINGS</span>
+            <span class="title-line">OIL &</span>
+            <span class="title-line">WATERCOLOR</span>
           </h1>
-          <p class="hero-location">2019—2023</p>
+          <p class="hero-location">2019—2023 Collection</p>
         </section>
 
         <section class="gallery-section">
+          <div class="category-filter">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Oil</button>
+            <button class="filter-btn">Watercolor</button>
+          </div>
+
           <div class="gallery-grid">
-            <div class="gallery-item">
-              <img src="images/painting1.jpg" alt="Painting 1">
+            <div class="gallery-item" data-category="oil">
+              <div class="gallery-image-wrapper">
+                <img src="images/painting1.jpg" alt="Silent Morning" class="gallery-image">
+              </div>
               <div class="gallery-info">
                 <span class="gallery-number">01</span>
                 <h3 class="gallery-title">Silent Morning</h3>
-                <p class="gallery-desc">Oil on canvas, 80×60cm</p>
+                <p class="gallery-desc">Oil on canvas · 80×60cm · 2021</p>
               </div>
             </div>
-            <!-- Add more gallery items -->
+
+            <div class="gallery-item" data-category="watercolor">
+              <div class="gallery-image-wrapper">
+                <img src="images/painting2.jpg" alt="Coastal Line" class="gallery-image">
+              </div>
+              <div class="gallery-info">
+                <span class="gallery-number">02</span>
+                <h3 class="gallery-title">Coastal Line</h3>
+                <p class="gallery-desc">Watercolor · 40×60cm · 2022</p>
+              </div>
+            </div>
+
+            <div class="gallery-item" data-category="oil">
+              <div class="gallery-image-wrapper">
+                <img src="images/painting3.jpg" alt="Golden Light" class="gallery-image">
+              </div>
+              <div class="gallery-info">
+                <span class="gallery-number">03</span>
+                <h3 class="gallery-title">Golden Light</h3>
+                <p class="gallery-desc">Oil on canvas · 60×60cm · 2020</p>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- Same footer as index.html -->
+        <footer class="app-footer">
+          <div class="footer-left">
+            <span>© 2023 ALEX DELETE</span>
+          </div>
+          <div class="footer-right">
+            <a href="#" class="footer-link">Instagram</a>
+            <a href="#" class="footer-link">Behance</a>
+          </div>
+        </footer>
       </div>
     </main>
   </div>
 
-  <!-- Same scripts as index.html -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
