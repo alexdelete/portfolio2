@@ -225,3 +225,142 @@ h1, h2, h3 {
     font-size: 12vw;
   }
 }
+/* Paintings Page */
+.category-filter {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  opacity: 0.6;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.filter-btn.active {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.gallery-image-wrapper {
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  transition: transform var(--transition);
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.05);
+}
+
+.gallery-info {
+  display: flex;
+  align-items: baseline;
+}
+
+.gallery-number {
+  color: var(--accent-color);
+  font-size: 12px;
+  margin-right: 12px;
+}
+
+.gallery-title {
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.gallery-desc {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* Contact Page */
+.contact-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 60px;
+}
+
+.info-block {
+  margin-bottom: 40px;
+}
+
+.info-title {
+  font-size: 14px;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+.info-link {
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.info-link:hover {
+  color: var(--accent-color);
+}
+
+.link-arrow {
+  margin-right: 8px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 0;
+  color: var(--text-color);
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.btn-arrow {
+  margin-left: 8px;
+  transition: var(--transition);
+}
+
+.submit-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
