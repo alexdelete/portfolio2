@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
  
-
+// Cursor
+const cursor = document.querySelector('.cursor');
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.pageX + 'px';
+  cursor.style.top = e.pageY + 'px';
+});
 // Переключение темы
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
@@ -115,3 +120,22 @@ document.addEventListener('DOMContentLoaded', function() {
         `<p>${projectData.description}</p>`;
     }
   });
+// GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from('.hero-title', {
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  ease: "power3.out"
+});
+
+gsap.from('.grid-item', {
+  opacity: 0,
+  y: 30,
+  stagger: 0.1,
+  scrollTrigger: {
+    trigger: '.grid-container',
+    start: "top 80%"
+  }
+});
