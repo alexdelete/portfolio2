@@ -3,97 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Contacts - Alex Delete</title>
+  <title>ALEX DELETE | Contact</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Neue+Machina:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <button id="theme-toggle" aria-label="Переключить тему">
-    <span class="icon-sun"></span>
-  </button>
+  <div class="cursor"></div>
+  <div class="page-transition"></div>
 
   <div class="app-container">
+    <header class="app-header">
+      <div class="header-left">
+        <span class="header-label">CONTACT</span>
+      </div>
+      <div class="header-right">
+        <button class="menu-toggle">
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+        </button>
+      </div>
+    </header>
+
     <aside class="app-nav">
       <nav class="nav-content">
-        <div class="nav-item" onclick="location.href='index.html'">
+        <div class="nav-item" data-index="0">
           <span class="nav-number">00</span>
           <span class="nav-title">Home</span>
-          <div class="nav-line"></div>
         </div>
-        <div class="nav-item" onclick="location.href='paintings.html'">
+        <div class="nav-item" data-index="1">
           <span class="nav-number">01</span>
           <span class="nav-title">Paintings</span>
-          <div class="nav-line"></div>
         </div>
-        <div class="nav-item" onclick="location.href='digital-art.html'">
+        <div class="nav-item" data-index="2">
           <span class="nav-number">02</span>
-          <span class="nav-title">Digital Art</span>
-          <div class="nav-line"></div>
+          <span class="nav-title">Digital</span>
         </div>
-        <div class="nav-item" onclick="location.href='bio.html'">
+        <div class="nav-item" data-index="3">
           <span class="nav-number">03</span>
           <span class="nav-title">Bio</span>
-          <div class="nav-line"></div>
         </div>
-        <div class="nav-item is--active" onclick="location.href='contacts.html'">
+        <div class="nav-item active" data-index="4">
           <span class="nav-number">04</span>
-          <span class="nav-title">Contacts</span>
-          <div class="nav-line"></div>
+          <span class="nav-title">Contact</span>
         </div>
       </nav>
     </aside>
 
     <main class="app-main">
-      <div class="content-wrapper">
+      <div class="scroll-container">
         <section class="hero-section">
-          <h1>Contacts</h1>
-          <p>For collaborations and inquiries</p>
+          <h1 class="hero-title">
+            <span class="title-line">LET'S</span>
+            <span class="title-line">WORK TOGETHER</span>
+          </h1>
+          <p class="hero-location">Available for collaborations</p>
         </section>
 
-        <div class="contacts-content">
-          <div class="contact-methods">
-            <div class="contact-item">
-              <h2>Email</h2>
-              <a href="mailto:hello@alexdelete.art" class="contact-link">hello@alexdelete.art</a>
-            </div>
-            
-            <div class="contact-item">
-              <h2>Social</h2>
-              <div class="social-links">
-                <a href="https://instagram.com/alexdelete" target="_blank" class="social-link">Instagram</a>
-                <a href="https://twitter.com/alexdelete" target="_blank" class="social-link">Twitter</a>
-                <a href="https://behance.net/alexdelete" target="_blank" class="social-link">Behance</a>
+        <section class="contact-section">
+          <div class="contact-columns">
+            <div class="contact-info">
+              <div class="info-block">
+                <h3 class="info-title">Email</h3>
+                <a href="mailto:hello@alexdelete.art" class="info-link">
+                  <span class="link-arrow">→</span> hello@alexdelete.art
+                </a>
+              </div>
+
+              <div class="info-block">
+                <h3 class="info-title">Social</h3>
+                <a href="#" class="info-link">
+                  <span class="link-arrow">→</span> Instagram
+                </a>
+                <a href="#" class="info-link">
+                  <span class="link-arrow">→</span> Behance
+                </a>
+              </div>
+
+              <div class="info-block">
+                <h3 class="info-title">Studio</h3>
+                <p class="info-text">
+                  Yaroslavl, Russia<br>
+                  By appointment only
+                </p>
               </div>
             </div>
-            
-            <div class="contact-item">
-              <h2>Studio</h2>
-              <address>
-                Moscow, Russia<br>
-                By appointment only
-              </address>
+
+            <div class="contact-form">
+              <form id="contactForm">
+                <div class="form-group">
+                  <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                  <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                  <span class="btn-text">Send Message</span>
+                  <span class="btn-arrow">→</span>
+                </button>
+              </form>
             </div>
           </div>
-          
-          <div class="contact-form">
-            <h2>Send Message</h2>
-            <form id="contactForm" class="form">
-              <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
-              </div>
-              <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
-              </div>
-              <div class="form-group">
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-              </div>
-              <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+        </section>
+
+        <footer class="app-footer">
+          <div class="footer-left">
+            <span>© 2023 ALEX DELETE</span>
           </div>
-        </div>
+          <div class="footer-right">
+            <a href="#" class="footer-link">Instagram</a>
+            <a href="#" class="footer-link">Behance</a>
+          </div>
+        </footer>
       </div>
     </main>
   </div>
-  
-  <script src="script.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
