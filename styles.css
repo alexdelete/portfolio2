@@ -1,16 +1,18 @@
 @import url('https://fonts.cdnfonts.com/css/coolvetica-2');
 
 :root {
-  --font-body: 'coolvetica rg', sans-serif;
-  --font-headings: 'coolvetica compressed', sans-serif;
-
-
+  /* Шрифты */
+  --font-body: 'Coolvetica Rg', sans-serif;
+  --font-headings: 'Coolvetica Rg', sans-serif;
+  
+  /* Размеры */
   --h1-size: 36px;
   --h2-size: 28px;
   --h3-size: 20px;
   --text-size: 16px;
   --small-text-size: 14px;
-
+  
+  /* Остальные переменные */
   --line-height: 1.5;
   --heading-weight: 500;
   --body-weight: 400;
@@ -22,16 +24,16 @@
   --active-color: #e0e0e0;
   --border-color: #e0e0e0;
   --section-spacing: 40px;
-  --bg-color: var(--default-bg);
+  --bg-color: var(--background-color);
   --hover-bg: #f0f0f0;
   --selected-bg: #e0e0e0;
 }
 
-
+/* Анимация появления */
 body {
   opacity: 0;
   animation: fadeIn 1s ease forwards;
-    width: 100%;
+  width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
@@ -40,42 +42,27 @@ body {
   to { opacity: 1; }
 }
 
-.fixed-title {
-  position: fixed;
-  top: 20px;
-  left: 40px;
-  font-size: 14px;
-  color: #999;
-  letter-spacing: 0.05em;
-  z-index: 999;
-}
-
-section {
-  padding-top: var(--section-spacing);
-  padding-bottom: var(--section-spacing);
-}
-
-section, h1, h2, p {
-  text-align: left;
-}
-
+/* Основные стили */
 html, body {
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: var(--body-weight);
   letter-spacing: 0.02em;
   background-color: var(--bg-color);
   color: var(--text-color);
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Заголовки */
 h1, h2, h3 {
+  font-family: var(--font-headings);
+  font-weight: var(--heading-weight);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 600;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--primary-color);
   display: inline-block;
   padding-bottom: 4px;
+  margin-bottom: 16px;
 }
 
 h1 {
@@ -90,14 +77,37 @@ h3 {
   font-size: var(--h3-size);
 }
 
+/* Текст */
 p {
   font-size: var(--text-size);
+  line-height: var(--line-height);
   margin-bottom: 16px;
 }
 
 small, .small {
   font-size: var(--small-text-size);
   color: var(--secondary-color);
+}
+
+/* Фиксированный заголовок */
+.fixed-title {
+  position: fixed;
+  top: 20px;
+  left: 40px;
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 0.05em;
+  z-index: 999;
+}
+
+/* Секции */
+section {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
+}
+
+section, h1, h2, p {
+  text-align: left;
 }
 
 .hero-section h1:hover {
